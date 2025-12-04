@@ -1,73 +1,106 @@
---// Quantum Onyx | Key System
---// Key: Quantum-onyx
---// Key Link: https://link4m.com/M7YLCzHp
+--// Lucky Random GOD-TIER UI FIXED
+--// Made by TaiRoblox & ChatGPT
 
-local KEY = "Quantum-onyx"
+local gui = Instance.new("ScreenGui", game.CoreGui)
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
 
-local Orion = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
+---------------------------------------------------------
+-- BLUR FX
+---------------------------------------------------------
+local blur = Instance.new("BlurEffect")
+blur.Parent = Lighting
+blur.Size = 0
+TweenService:Create(blur, TweenInfo.new(0.6), {Size = 18}):Play()
 
-local Window = Orion:MakeWindow({
-    Name = "🔮 Quantum Onyx | Key System",
-    IntroEnabled = true,
-    IntroText = "Quantum Onyx Loader",
-    SaveConfig = false
-})
+---------------------------------------------------------
+-- MAIN FRAME
+---------------------------------------------------------
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 270, 0, 175)
+frame.Position = UDim2.new(0.5, -135, 0.5, -87)
+frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+frame.BackgroundTransparency = 0.25
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+Instance.new("UICorner", frame)
 
-local Tab = Window:MakeTab({
-    Name = "🔐 Key System",
-    Icon = "rbxassetid://4483362458"
-})
+-- APPEAR FX
+frame.Rotation = 10
+frame.Size = UDim2.new(0, 0, 0, 0)
+TweenService:Create(frame, TweenInfo.new(0.6, Enum.EasingStyle.Back), {
+	Size = UDim2.new(0, 270, 0, 175),
+	Rotation = 0,
+}):Play()
 
-local userKey = ""
+---------------------------------------------------------
+-- BUTTON
+---------------------------------------------------------
+local btn = Instance.new("TextButton", frame)
+btn.Size = UDim2.new(0, 240, 0, 48)
+btn.Position = UDim2.new(0.055, 0, 0.28, 0)
+btn.Text = "X10000000000 Lucky Random"
+btn.TextColor3 = Color3.fromRGB(255,255,255)
+btn.Font = Enum.Font.GothamBold
+btn.TextSize = 15
+btn.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Instance.new("UICorner", btn)
 
--- Input Key Box
-Tab:AddTextbox({
-    Name = "Enter your key",
-    Default = "",
-    TextDisappear = false,
-    Callback = function(v)
-        userKey = v
-    end
-})
+---------------------------------------------------------
+-- STATUS TEXT
+---------------------------------------------------------
+local status = Instance.new("TextLabel", frame)
+status.BackgroundTransparency = 1
+status.Position = UDim2.new(0, 0, 0.72, 0)
+status.Size = UDim2.new(1, 0, 0, 30)
+status.Text = ""
+status.Font = Enum.Font.GothamBold
+status.TextSize = 18
+status.TextColor3 = Color3.fromRGB(0,255,0)
+status.TextTransparency = 1
 
--- Get Key Button
-Tab:AddButton({
-    Name = "🌐 Get Key",
-    Callback = function()
-        setclipboard("https://link4m.com/M7YLCzHp")
-        Orion:MakeNotification({
-            Name = "Link Copied!",
-            Content = "Paste it in your browser to get the key.",
-            Time = 4
-        })
-        game:GetService("GuiService"):OpenBrowserWindow("https://link4m.com/M7YLCzHp")
-    end
-})
+---------------------------------------------------------
+-- CREDIT
+---------------------------------------------------------
+local credit = Instance.new("TextLabel", frame)
+credit.BackgroundTransparency = 1
+credit.Position = UDim2.new(0, 0, 0.88, 0)
+credit.Size = UDim2.new(1, 0, 0, 20)
+credit.Text = "Made by TaiRoblox"
+credit.Font = Enum.Font.GothamBold
+credit.TextSize = 14
+credit.TextColor3 = Color3.fromRGB(140,140,255)
 
--- Check Key Button
-Tab:AddButton({
-    Name = "✅ Check Key",
-    Callback = function()
-        if userKey == KEY then
-            Orion:MakeNotification({
-                Name = "Correct Key!",
-                Content = "Loading Quantum Onyx...",
-                Time = 3
-            })
-            task.wait(0.5)
+---------------------------------------------------------
+-- TOGGLE BUTTON (Bật/Tắt UI)
+---------------------------------------------------------
+local toggle = Instance.new("TextButton", gui)
+toggle.Size = UDim2.new(0, 70, 0, 35)
+toggle.Position = UDim2.new(0.02, 0, 0.4, 0)
+toggle.Text = "Toggle UI"
+toggle.TextColor3 = Color3.fromRGB(255,255,255)
+toggle.Font = Enum.Font.GothamBold
+toggle.TextSize = 14
+toggle.BackgroundColor3 = Color3.fromRGB(25,25,25)
+Instance.new("UICorner", toggle)
 
-            -- === LOAD MAIN SCRIPT ===
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))()
-            -- =========================
+local uiVisible = true
+toggle.MouseButton1Click:Connect(function()
+	uiVisible = not uiVisible
+	frame.Visible = uiVisible
+end)
 
-        else
-            Orion:MakeNotification({
-                Name = "Wrong Key!",
-                Content = "The key you entered is incorrect.",
-                Time = 3
-            })
-        end
-    end
-})
+---------------------------------------------------------
+-- BUTTON CLICK LOGIC
+---------------------------------------------------------
+btn.MouseButton1Click:Connect(function()
+	status.Text = "Activated x10000000000!"
+	status.TextTransparency = 1
 
-Orion:Init()
+	-- Fade in
+	TweenService:Create(status, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
+	task.wait(1)
+	-- Fade out
+	TweenService:Create(status, TweenInfo.new(0.7), {TextTransparency = 1}):Play()
+end)
