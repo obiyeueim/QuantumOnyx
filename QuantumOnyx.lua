@@ -174,35 +174,43 @@ until player.Team
 hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function() end)
 hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Respawn), function() end)
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+-- Tạo window siêu đẹp
 Window = Fluent:CreateWindow({
-    Title = "Ten Hub",
-    SubTitle="Blox Fruits", 
-    TabWidth=155, 
-    Theme="Darker",
-    Acrylic=false,
-    Size=UDim2.fromOffset(555, 320), 
-    MinimizeKey = Enum.KeyCode.LeftControl
+    Title = "Ten Hub v2",                  -- Tiêu đề sang hơn
+    SubTitle = "Blox Fruits | Pro Edition", -- Phụ đề
+    TabWidth = 170,                        -- Tab rộng, dễ bấm
+    Theme = "Dark",                        -- Theme tối đẹp nhất + ổn định
+    Acrylic = true,                        -- Bật hiệu ứng mờ kính (blur) - ĐẸP NHẤT ĐÂY!
+    Size = UDim2.fromOffset(620, 420),     -- Window lớn hơn, thoải mái xem
+    MinimizeKey = Enum.KeyCode.LeftControl -- Phím tắt giữ nguyên
 })
+
+-- Thông báo load thành công (đẹp hơn)
+Fluent:Notify({
+    Title = "Ten Hub v2",
+    Content = "Load thành công! Giao diện mới siêu đẹp rồi nhé 🔥",
+    Duration = 10
+})
+
+-- Tabs mới: Tên tiếng Việt + tiếng Anh, có icon đẹp (Fluent hỗ trợ Lucide Icons)
 local Tabs = {
-
-Info=Window:AddTab({ Title="Tab Info" }),
-    Main=Window:AddTab({ Title="Tab Fram" }),
-
-Main1=Window:AddTab({ Title="Tab Fram Other" }),
-    Sea=Window:AddTab({ Title="Tab Sea Event" }),
-    Item=Window:AddTab({ Title="Tab Stack Fram" }),
-    Setting=Window:AddTab({ Title="Tab Setting" }),
-    Status=Window:AddTab({ Title="Tab Status" }),
-    Stats=Window:AddTab({ Title="Tab Stats" }),
-    Player=Window:AddTab({ Title="Tab Player" }),
-    Teleport=Window:AddTab({ Title="Tab Teleport" }),
-    Visual=Window:AddTab({ Title="Tab Visual" }),
-    Fruit=Window:AddTab({ Title="Tab Fruit" }),
-    Raid=Window:AddTab({ Title="Tab Raid" }),
-    Race=Window:AddTab({ Title="Tab Race" }),
-    Shop=Window:AddTab({ Title="Tab Shop" }),
-    Misc=Window:AddTab({ Title="Tab Misc" }),
+    Main     = Window:AddTab({ Title = "Auto Farm Chính", Icon = "sword" }),         -- Farm level
+    Farm     = Window:AddTab({ Title = "Farm Phụ",       Icon = "sprout" }),        -- Bone, Ember, Material
+    Sea      = Window:AddTab({ Title = "Sea Event",      Icon = "waves" }),         -- Leviathan, Volcano
+    Race     = Window:AddTab({ Title = "Race V4 Trial",  Icon = "zap" }),           -- Race trial
+    Fruit    = Window:AddTab({ Title = "Trái Ác Quỷ",    Icon = "apple" }),         -- Fruit sniper
+    Raid     = Window:AddTab({ Title = "Raid & Awaken",  Icon = "swords" }),        -- Raid
+    Stats    = Window:AddTab({ Title = "Auto Stats",     Icon = "trending-up" }),   -- Điểm
+    Player   = Window:AddTab({ Title = "PVP & Kill",     Icon = "target" }),        -- PVP
+    Teleport = Window:AddTab({ Title = "Dịch Chuyển",    Icon = "map-pin" }),       -- TP đảo
+    Visual   = Window:AddTab({ Title = "ESP Visual",     Icon = "eye" }),           -- ESP
+    Shop     = Window:AddTab({ Title = "Cửa Hàng",       Icon = "shopping-cart" }), -- Mua đồ
+    Misc     = Window:AddTab({ Title = "Tạp Hóa",        Icon = "settings" }),      -- Code, hop, team
+    Status   = Window:AddTab({ Title = "Trạng Thái",     Icon = "info" }),          -- Mirage, moon
+    Info     = Window:AddTab({ Title = "Thông Tin",      Icon = "user" }),          -- Info player
 }
+
 local Options = Fluent.Options
 local id = game.PlaceId
 if id==2753915549 then Sea1=true; elseif id==4442272183 then Sea2=true; elseif id==7449423635 then Sea3=true; else game:Shutdown() end;
