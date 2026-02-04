@@ -1,60 +1,3 @@
-
--- ===== SIMPLE KEY SYSTEM =====
-_G.ValidKeys = {"KEY123", "GAYHUBROBLOX"}
-_G.KeyEntered = false
-
-local UserInputService = game:GetService("UserInputService")
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-	if gameProcessed then return end
-	
-	if input.KeyCode == Enum.KeyCode.K then
-		local key = prompt("Enter Key:")
-		for _, validKey in ipairs(_G.ValidKeys) do
-			if key == validKey then
-				_G.KeyEntered = true
-				print("✅ Key Valid!")
-				break
-			end
-		end
-		if not _G.KeyEntered then
-			print("❌ Invalid Key!")
-		end
-	end
-end)
-
--- Script chạy khi key đúng
-while not _G.KeyEntered do
-	wait(0.1)
-end
-
--- ===== MAIN SCRIPT =====
-local Y = game.Players;
-local d = Y.LocalPlayer;
-		keyInput = io.read()
-		
-		for _, validKey in ipairs(ValidKeys) do
-			if keyInput == validKey then
-				print("✅ Key Valid! Script Loading...")
-				wait(1)
-				return true
-			end
-		end
-		
-		attempts = attempts + 1
-		print("❌ Invalid Key! Attempts: " .. attempts .. "/" .. maxAttempts)
-	end
-	
-	print("⛔ Access Denied - Max Attempts Exceeded!")
-	return false
-end
-
--- Kiểm tra key trước khi chạy script
-if not CheckKey() then
-	return
-end
-
--- ===== SCRIPT BẮT ĐẦU =====
 local Y = game.Players;
 local d = Y.LocalPlayer;
 local R = d.Character.HumanoidRootPart;
@@ -1847,7 +1790,7 @@ end;
 nz.Gui = Instance.new("ScreenGui");
 nz.Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
 nz.Gui.Name = "noguchihyuga";
-nz.Gui.Enabled = true;  -- ✅ Đổi từ false thành true
+nz.Gui.Enabled = false;
 dz.ReadyForGuiLoaded = false;
 spawn(function()
 	repeat
